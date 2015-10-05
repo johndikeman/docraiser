@@ -1,12 +1,14 @@
-import os
+import os,sys
 
-def get_wood():
+def get_wood(current_dir = None):
 	files = []
-	current_dir = os.path.dirname(os.path.abspath(__file__))
+	if not current_dir:
+		current_dir = os.path.dirname(os.path.abspath(__file__))
 	open('%s/js/output.js' % current_dir,'w').close()
 	for dirpath, dirname, filename in os.walk(current_dir):
-		for a in filename:
-			files.append('%s/%s' % (dirpath,a))
+		if '.git' not in dirpath:	
+			for a in filename:
+				files.append('%s/%s' % (dirpath,a))
 	file_text_split = ''
 	for file_path in files:
 		with open(file_path,'r+') as w:
@@ -15,4 +17,7 @@ def get_wood():
 		fi.write('window.output = "%s"' % file_text_split)
 
 if __name__ == '__main__':
-	get_wood()
+	try:
+		get_wood(sys.argv[1])
+	except IndexError:
+		get_wood()
