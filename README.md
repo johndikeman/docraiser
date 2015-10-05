@@ -5,7 +5,7 @@ this was created to generate documentation for our <a href='https://github.com/m
 
 
 #usage
-put the code that you want to document in the root directory, then run run.py. the code will be chewed up and spit out into the output.js file. once you have done this, pop open index.html and your pretty documentation will be there.
+put the code that you want to document in the root directory or specify the absolute path as an argument to run.py. your code will be chewed up and spit out into the output.js file. once you have done this, pop open index.html and your pretty documentation will be there.
 
 #commenting
 docraiser does its thing using html headings. to comment your code for docraiser you need to first put the level of heading you want, then the name of the heading- all enclosed by a special delimeter (which is * by default. it can be changed by editing it on the first line of main.coffee). for example:
